@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>All Questions</h2>
+<ul class="list-group">
+    {% for question in questions %}
+        <li class="list-group-item">
+            <a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a>
+            <small class="text-muted d-block">By {{ question.user.username }} | {{ question.created_at }}</small>
+        </li>
+    {% empty %}
+        <p>No questions posted yet.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
